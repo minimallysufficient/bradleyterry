@@ -54,7 +54,7 @@ end
 
 D = zeros(Int, length(id), length(id))
 
-for i = 2:size(data, 1)
+for i = 1:size(data, 1)
     team1 = data[i, 2]
     score1 = data[i, 4]
     
@@ -76,11 +76,11 @@ nDraw = 1000
 sampler = @task bt_sampler(D)
 
 ## Burn in
-for i in 1:nBurn
+for i = 1:nBurn
     consume(sampler)
 end
 
 ## Draw from the posterior and do what you will
-for i in 1:nDraw
+for i = 1:nDraw
     λ = consume(sampler)
 end
